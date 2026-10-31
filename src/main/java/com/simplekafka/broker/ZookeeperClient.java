@@ -26,7 +26,7 @@ public class ZookeeperClient implements Watcher {
         this.port = port;
     }
 
-    public void connect() throws IOException, InterruptedException {
+    public void connect() throws IOException, KeeperException, InterruptedException {
         connectedSignal = new CountDownLatch(1);
         zooKeeper = new ZooKeeper(getConnectString(), SESSION_TIMEOUT, this);
         connectedSignal.await();
